@@ -17,10 +17,10 @@ describe("calculateValue", () => {
     expect(calculateValue("Honda Civic", 2018)).toBe(88 * 100 + 2018); // 8800 + 2018 = 10818
   });
 
-  // // Test Case 3: Model with only numbers (should result in error/null)
-  // test('should return null for model "911" (only numbers), 2020', () => {
-  //   expect(calculateValue("911", 2020)).toBeNull();
-  // });
+  // Test Case 3: Model with only numbers (should result in error/null)
+  test('should return null for model "911" (only numbers), 2020', () => {
+    expect(calculateValue("911", 2020)).toBeNull();
+  });
 
   // Test Case 4: Model with hyphen (hyphen ignored)
   test('should correctly calculate value for "Task-Force", 1987', () => {
@@ -51,15 +51,15 @@ describe("calculateValue", () => {
     expect(calculateValue("Ford", -500)).toBe(43 * 100 - 500); // 4300 - 500 = 3800
   });
 
-  // // Test Case 9: Empty string for model
-  // test('should return null for empty model "", 2021', () => {
-  //   expect(calculateValue("", 2021)).toBeNull();
-  // });
+  // Test Case 9: Empty string for model
+  test('should return null for empty model "", 2021', () => {
+    expect(calculateValue("", 2021)).toBeNull();
+  });
 
-  // // Test Case 10: Model with only spaces
-  // test('should return null for model with only spaces "   ", 2021', () => {
-  //   expect(calculateValue("   ", 2021)).toBeNull();
-  // });
+  // Test Case 10: Model with only spaces
+  test('should return null for model with only spaces "   ", 2021', () => {
+    expect(calculateValue("   ", 2021)).toBeNull();
+  });
 
   // Test Case 11: Model with special character (ignored)
   test('should correctly calculate value for "Model!", 2010', () => {
@@ -67,25 +67,25 @@ describe("calculateValue", () => {
     expect(calculateValue("Model!", 2010)).toBe(49 * 100 + 2010); // 4900 + 2010 = 6910
   });
 
-  // // Test Case 12: Null value for year
-  // test('should return null for year "Car", null', () => {
-  //   expect(calculateValue("Car", null)).toBeNull();
-  // });
+  // Test Case 12: Null value for year
+  test('should return null for year "Car", null', () => {
+    expect(calculateValue("Car", null)).toBeNull();
+  });
 
-  // // Test Case 13: Year as a string
-  // test('should return null for year as string "Truck", "2020"', () => {
-  //   expect(calculateValue("Truck", "2020")).toBeNull();
-  // });
+  // Test Case 13: Year as a string
+  test('should return null for year as string "Truck", "2020"', () => {
+    expect(calculateValue("Truck", "2020")).toBeNull();
+  });
 
-  // // Test Case 14: Null value for model
-  // test("should return null for model null, 2020", () => {
-  //   expect(calculateValue(null, 2020)).toBeNull();
-  // });
+  // Test Case 14: Null value for model
+  test("should return null for model null, 2020", () => {
+    expect(calculateValue(null, 2020)).toBeNull();
+  });
 
-  // // Test Case 15: Model as a number
-  // test("should return null for model as number 123, 2020", () => {
-  //   expect(calculateValue(123, 2020)).toBeNull();
-  // });
+  // Test Case 15: Model as a number
+  test("should return null for model as number 123, 2020", () => {
+    expect(calculateValue(123, 2020)).toBeNull();
+  });
 
   // Test Case 16: Model with leading/trailing spaces
   test('should correctly calculate value for "  Oldsmobile  ", 1995', () => {

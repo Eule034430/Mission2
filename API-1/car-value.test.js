@@ -1,10 +1,7 @@
-// car-value.test.js
-
-// Import the function to be tested
-const { calculateValue } = require("./car-value"); // Assuming car-value.js is in the same directory
+const { calculateValue } = require("../car-value"); // Assuming car-value.js is in the same directory
 
 describe("calculateValue", () => {
-  // Test Case 1: Sunny day scenario (from your example)
+  // Test Case 1: Basic model
   test('should correctly calculate value for "Civic", 2020', () => {
     expect(calculateValue("Civic", 2020)).toBe(6620); // (3+9+22+9+3)*100 + 2020 = 4600 + 2020 = 6620
   });
@@ -17,9 +14,9 @@ describe("calculateValue", () => {
     expect(calculateValue("Honda Civic", 2018)).toBe(88 * 100 + 2018); // 8800 + 2018 = 10818
   });
 
-  // Test Case 3: Model with only numbers (should result in error/null)
-  test('should return null for model "911" (only numbers), 2020', () => {
-    expect(calculateValue("911", 2020)).toBeNull();
+  // Test Case 3: Model with only numbers (should result the year)
+  test('should correctly return year of the model "911" (only numbers), 2020', () => {
+    expect(calculateValue("911", 2020)).toBe(2020);
   });
 
   // Test Case 4: Model with hyphen (hyphen ignored)
@@ -46,9 +43,8 @@ describe("calculateValue", () => {
   });
 
   // Test Case 8: Negative year
-  test('should correctly calculate value for "Ford", -500', () => {
-    // F=6, O=15, R=18, D=4 => Sum = 43
-    expect(calculateValue("Ford", -500)).toBe(43 * 100 - 500); // 4300 - 500 = 3800
+  test('should return null for negative year "Ford", -500', () => {
+    expect(calculateValue("Ford", -500)).toBeNull();
   });
 
   // Test Case 9: Empty string for model

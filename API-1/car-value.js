@@ -4,7 +4,7 @@
  * - Car_value = (sum of alphabet positions of letters in model) * 100 + year.
  * - Alphabet position: A=1, B=2, ..., Z=26.
  * - Spaces and any other non-alphabetic signs in the model are ignored.
- * - Returns null if inputs are invalid (e.g., empty model, non-numeric year, model with no letters).
+ * - Returns null if inputs are invalid (e.g., empty model, non-numeric year).
  *
  * @param {string} model - The car model.
  * @param {number} year - The car year.
@@ -19,10 +19,17 @@ function calculateValue(model, year) {
     return null;
   }
 
-  // Validate year: should be a number
-  if (typeof year !== "number" || isNaN(year)) {
-    console.error("Validation Error (calculateValue): Year must be a number.");
+  // Validate year: should be a number and non-negative
+  if (typeof year !== "number" || isNaN(year) || year < 0) {
+    console.error(
+      "Validation Error (calculateValue): Year must be a non-negative number."
+    );
     return null;
+  }
+
+  // If model contains no alphabetic characters, return the year
+  if (typeof model === "string" && !/[a-zA-Z]/.test(model)) {
+    return year;
   }
 
   let modelValueSum = 0;
@@ -37,7 +44,7 @@ function calculateValue(model, year) {
       // 'A'.charCodeAt(0) gives the ASCII value of 'A'
       modelValueSum += char.charCodeAt(0) - "A".charCodeAt(0) + 1;
     }
-    // Spaces and other non-alphabetic signs are ignored as per the rule
+    // Spaces and other non-alphabetic signs are ignored
   }
 
   // If no alphabetic characters were found in the model, it's an invalid model for this logic
@@ -52,7 +59,6 @@ function calculateValue(model, year) {
   return carValue;
 }
 
-// Export the function to be used by other modules
 module.exports = {
   calculateValue,
 };

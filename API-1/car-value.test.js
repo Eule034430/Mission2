@@ -1,4 +1,4 @@
-const { calculateValue } = require("../car-value"); // Assuming car-value.js is in the same directory
+const { calculateValue } = require("./car-value");
 
 describe("calculateValue", () => {
   // Test Case 1: Basic model
